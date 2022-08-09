@@ -9,5 +9,7 @@
 
 
         public List<Branch> Branches { get; set; }
+        public List<QueryCounter> QueryCounters { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }
