@@ -14,6 +14,17 @@ namespace DataAccess
         public DbSet<QueryCounter> QueryCounters { get; set; }
         public DbSet<User> Users { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Console logging activated.
+            // optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+
+            // Lazy loading activated.
+            optionsBuilder.UseLazyLoadingProxies();
+
+            base.OnConfiguring(optionsBuilder);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration<User>(new UserConfig());
@@ -27,6 +38,29 @@ namespace DataAccess
             base.OnModelCreating(modelBuilder);
         }
 
-        
+        public override int SaveChanges()
+        {
+            ChangeTracker.Entries()
+                .Where(z => z.Entity is BaseEntity && (z.State == EntityState.Added || z.State == EntityState.Modified))
+                .ToList()
+                .ForEach(entity =>
+                {
+                    if(entity.State == EntityState.Added)
+                    {
+                        ((BaseEntity)entity.Entity).CreatedOn = DateTime.Now;
+                        ((BaseEntity)entity.Entity).ModifiedOn = DateTime.Now;
+
+                        // TODO: Set CreatedBy/ModifiedBy Field
+                    }
+
+                    if(entity.State == EntityState.Modified)
+                    {
+                        ((BaseEntity)entity.Entity).ModifiedOn = DateTime.Now;
+                        // TODO: Set ModifiedBy Field
+                    }
+                });
+
+            return base.SaveChanges();
+        }
     }
 }

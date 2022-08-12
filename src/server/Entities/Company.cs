@@ -6,10 +6,19 @@
         public string Name { get; set; }
         public string APIKey { get; set; }
         public decimal UnitPrice { get; set; }
+        public CompanyStatus Status { get; set; }
 
 
-        public List<Branch> Branches { get; set; }
-        public List<QueryCounter> QueryCounters { get; set; }
-        public List<Reservation> Reservations { get; set; }
+        public virtual List<Branch> Branches { get; set; }
+        public virtual List<QueryCounter> QueryCounters { get; set; }
+        public virtual List<Reservation> Reservations { get; set; }
+
+        
+    }
+
+    public enum CompanyStatus : short
+    {
+        Deactive = 0,
+        Active = 1
     }
 }

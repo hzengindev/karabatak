@@ -1,5 +1,7 @@
 
+using Business.Handlers;
 using DataAccess;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"));
 });
+
+builder.Services.AddMediatR(typeof(MediatRBase).Assembly);
 
 var app = builder.Build();
 

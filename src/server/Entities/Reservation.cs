@@ -13,7 +13,7 @@
         public bool PaymentStatus { get; set; }
 
 
-        public Branch Branch { get; set; }
-        public Company Company { get; set; }
+        public virtual Branch Branch { get; set; }
+        public virtual Company Company { get; set; }
     }
 }
