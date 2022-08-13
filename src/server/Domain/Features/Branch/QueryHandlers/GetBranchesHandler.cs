@@ -23,12 +23,12 @@ namespace Domain.Features.Branch.QueryHandlers
                 .ToListAsync();
 
             GetBranchesDTO result = new GetBranchesDTO();
-            result.Branches = branches.ConvertAll(z => new BranchDTO
+            result.Branches = branches.ConvertAll(z => new GetBranchesDTO.BranchDTO
             {
                 Id = z.Id,
                 Name = z.Name,
                 Status = z.Status,
-                Company = z.Company is not null ? new CompanyDTO
+                Company = z.Company is not null ? new GetBranchesDTO.CompanyDTO
                 {
                     Id = z.Company.Id,
                     Name = z.Company.Name

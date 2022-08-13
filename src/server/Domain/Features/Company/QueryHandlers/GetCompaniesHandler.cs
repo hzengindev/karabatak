@@ -20,7 +20,7 @@ namespace Domain.Features.Company.QueryHandlers
             var branches = await _ctx.Companies.AsNoTracking().ToListAsync();
 
             GetCompaniesDTO result = new GetCompaniesDTO();
-            result.Companies = branches.ConvertAll(z => new CompanyDTO
+            result.Companies = branches.ConvertAll(z => new GetCompaniesDTO.CompanyDTO
             {
                 Id = z.Id,
                 Name = z.Name,

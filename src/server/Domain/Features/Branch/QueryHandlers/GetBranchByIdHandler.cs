@@ -4,6 +4,7 @@ using DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Domain.Features.Branch.QueryHandlers
 {
     public class GetBranchByIdHandler : IRequestHandler<GetBranchById, GetBranchByIdDTO>
@@ -25,19 +26,18 @@ namespace Domain.Features.Branch.QueryHandlers
             if (branch is null)
                 throw new Exception("There is no branch.");
 
-            GetBranchByIdDTO result = new GetBranchByIdDTO();
-            result.Branch = new BranchDTO
+            GetBranchByIdDTO result = new GetBranchByIdDTO()
             {
                 Id = branch.Id,
                 Name = branch.Name,
                 Status = branch.Status,
-                Company = branch.Company is not null ? new CompanyDTO
+                Company = branch.Company is not null ? new GetBranchByIdDTO.CompanyDTO
                 {
                     Id = branch.Company.Id,
                     Name = branch.Company.Name
                 } : null
             };
-
+            
             return result;
         }
     }

@@ -1,8 +1,8 @@
 ﻿using DataAccess.Entities;
 
-namespace Domain.Features.Branch.DTOs
+namespace Domain.Features.Company.DTOs
 {
-    public class GetBranchesDTO
+    public class GetBranchesByCompanyIdDTO
     {
         public List<BranchDTO> Branches { get; set; } = new List<BranchDTO>();
 
@@ -11,13 +11,6 @@ namespace Domain.Features.Branch.DTOs
             public Guid Id { get; set; }
             public string Name { get; set; }
             public BranchStatus Status { get; set; }
-            public CompanyDTO Company { get; set; }
-        }
-
-        public class CompanyDTO
-        {
-            public Guid Id { get; set; }
-            public string Name { get; set; }
         }
     }
 }

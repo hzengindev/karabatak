@@ -1,4 +1,4 @@
-﻿namespace Entities
+﻿namespace DataAccess.Entities
 {
     public class BaseEntity : IEntity
     {

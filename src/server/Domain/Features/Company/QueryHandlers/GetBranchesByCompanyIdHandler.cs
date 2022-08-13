@@ -2,10 +2,11 @@
 using DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Domain.Features.Company.DTOs;
 
 namespace Domain.Features.Company.QueryHandlers
 {
-    public class GetBranchesByCompanyIdHandler : IRequestHandler<GetBranchesByCompanyId, List<string>>
+    public class GetBranchesByCompanyIdHandler : IRequestHandler<GetBranchesByCompanyId, GetBranchesByCompanyIdDTO>
     {
         private readonly AppDbContext _ctx;
 
@@ -14,10 +15,22 @@ namespace Domain.Features.Company.QueryHandlers
             _ctx = appDbContext;
         }
 
-        public async Task<List<string>> Handle(GetBranchesByCompanyId request, CancellationToken cancellationToken)
+        public async Task<GetBranchesByCompanyIdDTO> Handle(GetBranchesByCompanyId request, CancellationToken cancellationToken)
         {
-            var branches = await _ctx.Branches.Where(z => z.CompanyId == request.CompanyId).ToListAsync();
-            return branches.Select(z => z.Name).ToList();
+            var branches = await _ctx.Branches
+                .AsNoTracking()
+                .Where(z => z.CompanyId == request.CompanyId)
+                .ToListAsync();
+
+            GetBranchesByCompanyIdDTO result = new GetBranchesByCompanyIdDTO();
+            result.Branches = branches.ConvertAll(z => new GetBranchesByCompanyIdDTO.BranchDTO
+            {
+                Id = z.Id,
+                Name = z.Name,
+                Status = z.Status
+            });
+
+            return result;
         }
     }
 }

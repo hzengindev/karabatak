@@ -24,8 +24,7 @@ namespace Domain.Features.Company.QueryHandlers
             if (company is null)
                 throw new Exception("There is no company.");
 
-            GetCompanyByIdDTO result = new GetCompanyByIdDTO();
-            result.Company = new CompanyDTO
+            GetCompanyByIdDTO result = new GetCompanyByIdDTO()
             {
                 Id = company.Id,
                 Name = company.Name,
