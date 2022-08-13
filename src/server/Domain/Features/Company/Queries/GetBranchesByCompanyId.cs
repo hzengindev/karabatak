@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Business.Handlers.Branch.Queries
+namespace Domain.Features.Company.Queries
 {
     public class GetBranchesByCompanyId : IRequest<List<string>>
     {

@@ -1,7 +1,7 @@
-﻿using Business.Handlers.Branch.DTOs;
+﻿using Domain.Features.Branch.DTOs;
 using MediatR;
 
-namespace Business.Handlers.Branch.Queries
+namespace Domain.Features.Branch.Queries
 {
     public class GetBranchById : IRequest<GetBranchByIdDTO>
     {

@@ -1,24 +1,12 @@
-
-using Business.Handlers;
+using API;
 using DataAccess;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<AppDbContext>(option =>
-{
-    option.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"));
-});
-
-builder.Services.AddMediatR(typeof(MediatRBase).Assembly);
+builder.Services.AddAPIDependencies();
+builder.Services.AddDataAccessDependencies(builder.Configuration);
+builder.Services.AddDomainDependencies();
 
 var app = builder.Build();
 

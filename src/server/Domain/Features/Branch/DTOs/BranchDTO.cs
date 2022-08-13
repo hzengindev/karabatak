@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace Business.Handlers.Branch.DTOs
+namespace Domain.Features.Branch.DTOs
 {
     public class BranchDTO
     {

@@ -20,6 +20,7 @@ namespace DataAccess
                 UnitPrice = 2.5M,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
+                Status = CompanyStatus.Active
             });
 
             modelBuilder.Entity<Branch>().HasData(new Branch()
@@ -29,6 +30,7 @@ namespace DataAccess
                 CompanyId = companyId,
                 CreatedOn = DateTime.Now,
                 ModifiedOn = DateTime.Now,
+                Status = BranchStatus.Active
             });
 
             modelBuilder.Entity<User>().HasData(new User()

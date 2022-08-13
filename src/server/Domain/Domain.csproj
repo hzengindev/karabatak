@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\Company\CommandHandlers\" />
-    <Folder Include="Handlers\Company\Commands\" />
-    <Folder Include="Handlers\Branch\Commands\" />
-    <Folder Include="Handlers\Branch\CommandHandlers\" />
+    <Folder Include="Features\Company\CommandHandlers\" />
+    <Folder Include="Features\Company\Commands\" />
+    <Folder Include="Features\Branch\Commands\" />
+    <Folder Include="Features\Branch\CommandHandlers\" />
   </ItemGroup>
 
   <ItemGroup>

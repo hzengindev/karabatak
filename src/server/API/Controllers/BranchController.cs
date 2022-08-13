@@ -1,4 +1,4 @@
-﻿using Business.Handlers.Branch.Queries;
+﻿using Domain.Features.Branch.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

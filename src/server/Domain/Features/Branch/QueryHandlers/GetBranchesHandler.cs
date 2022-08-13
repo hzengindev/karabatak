@@ -1,10 +1,10 @@
-﻿using Business.Handlers.Branch.DTOs;
-using Business.Handlers.Branch.Queries;
+﻿using Domain.Features.Branch.DTOs;
+using Domain.Features.Branch.Queries;
 using DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Business.Handlers.Branch.QueryHandlers
+namespace Domain.Features.Branch.QueryHandlers
 {
     public class GetBranchesHandler : IRequestHandler<GetBranches, GetBranchesDTO>
     {

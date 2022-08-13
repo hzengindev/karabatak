@@ -1,9 +1,9 @@
-﻿using Business.Handlers.Branch.Queries;
+﻿using Domain.Features.Company.Queries;
 using DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Business.Handlers.Branch.QueryHandlers
+namespace Domain.Features.Company.QueryHandlers
 {
     public class GetBranchesByCompanyIdHandler : IRequestHandler<GetBranchesByCompanyId, List<string>>
     {
